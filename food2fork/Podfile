@@ -1,0 +1,10 @@
+platform :ios, '11.0'
+
+target 'food2fork' do
+  use_frameworks!
+
+  # Pods for HelloWord
+  pod 'Reusable'
+  pod 'Alamofire'
+  pod 'AlamofireImage'
+end
