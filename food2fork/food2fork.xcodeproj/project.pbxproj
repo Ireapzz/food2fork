@@ -18,6 +18,10 @@
 		869B71AF22EC7F11008068DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 869B71AD22EC7F11008068DE /* Main.storyboard */; };
 		869B71B122EC7F12008068DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 869B71B022EC7F12008068DE /* Assets.xcassets */; };
 		869B71B422EC7F12008068DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 869B71B222EC7F12008068DE /* LaunchScreen.storyboard */; };
+		86DFACAA22EDCEBB00F14C41 /* FoodForkRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DFACA922EDCEBB00F14C41 /* FoodForkRecipe.swift */; };
+		86DFACAC22EDCFDE00F14C41 /* FoodDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DFACAB22EDCFDE00F14C41 /* FoodDetailsViewController.swift */; };
+		86DFACAF22EDD2D900F14C41 /* IngredientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DFACAD22EDD2D900F14C41 /* IngredientsTableViewCell.swift */; };
+		86DFACB022EDD2D900F14C41 /* IngredientsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86DFACAE22EDD2D900F14C41 /* IngredientsTableViewCell.xib */; };
 		F8B0B9D22BC786D46AD2F75A /* Pods_food2fork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4476D76AC83E897DF9DEBA29 /* Pods_food2fork.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +41,10 @@
 		869B71B022EC7F12008068DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		869B71B322EC7F12008068DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		869B71B522EC7F12008068DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86DFACA922EDCEBB00F14C41 /* FoodForkRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodForkRecipe.swift; sourceTree = "<group>"; };
+		86DFACAB22EDCFDE00F14C41 /* FoodDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailsViewController.swift; sourceTree = "<group>"; };
+		86DFACAD22EDD2D900F14C41 /* IngredientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewCell.swift; sourceTree = "<group>"; };
+		86DFACAE22EDD2D900F14C41 /* IngredientsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngredientsTableViewCell.xib; sourceTree = "<group>"; };
 		CCF00A349DCE0ABCAEAC8ADF /* Pods-food2fork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-food2fork.release.xcconfig"; path = "Target Support Files/Pods-food2fork/Pods-food2fork.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				8659C83A22EC858000A5413C /* FoodFork.swift */,
+				86DFACA922EDCEBB00F14C41 /* FoodForkRecipe.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -134,6 +143,9 @@
 				869B71B522EC7F12008068DE /* Info.plist */,
 				8659C84222EC8B1D00A5413C /* FoodsTableViewCell.swift */,
 				8659C84322EC8B1D00A5413C /* FoodsTableViewCell.xib */,
+				86DFACAB22EDCFDE00F14C41 /* FoodDetailsViewController.swift */,
+				86DFACAD22EDD2D900F14C41 /* IngredientsTableViewCell.swift */,
+				86DFACAE22EDD2D900F14C41 /* IngredientsTableViewCell.xib */,
 			);
 			path = food2fork;
 			sourceTree = "<group>";
@@ -198,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86DFACB022EDD2D900F14C41 /* IngredientsTableViewCell.xib in Resources */,
 				869B71B422EC7F12008068DE /* LaunchScreen.storyboard in Resources */,
 				8659C84522EC8B1D00A5413C /* FoodsTableViewCell.xib in Resources */,
 				869B71B122EC7F12008068DE /* Assets.xcassets in Resources */,
@@ -254,10 +267,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86DFACAF22EDD2D900F14C41 /* IngredientsTableViewCell.swift in Sources */,
 				8659C84122EC862500A5413C /* Constants.swift in Sources */,
+				86DFACAA22EDCEBB00F14C41 /* FoodForkRecipe.swift in Sources */,
 				8659C84422EC8B1D00A5413C /* FoodsTableViewCell.swift in Sources */,
 				869B71AC22EC7F11008068DE /* ViewController.swift in Sources */,
 				869B71AA22EC7F11008068DE /* AppDelegate.swift in Sources */,
+				86DFACAC22EDCFDE00F14C41 /* FoodDetailsViewController.swift in Sources */,
 				8659C83E22EC85F200A5413C /* Food2ForkWs.swift in Sources */,
 				8659C83B22EC858000A5413C /* FoodFork.swift in Sources */,
 				8659C84822EC8E0100A5413C /* UILabel+extension.swift in Sources */,

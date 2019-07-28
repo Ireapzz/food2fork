@@ -12,10 +12,10 @@ import Reusable
 class FoodsTableViewCell: UITableViewCell, NibReusable {
 
     // MARK: - IBOutlet
-    @IBOutlet weak var foodImg: UIImageView!
-    @IBOutlet weak var foodTitle: UILabel!
-    @IBOutlet weak var foodPublisher: UILabel!
-    @IBOutlet weak var foodRank: UILabel!
+    @IBOutlet private weak var foodImg: UIImageView!
+    @IBOutlet private weak var foodTitle: UILabel!
+    @IBOutlet private weak var foodPublisher: UILabel!
+    @IBOutlet private weak var foodRank: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,10 +36,18 @@ extension FoodsTableViewCell {
 
 // MARK: - Prepare Cell
 extension FoodsTableViewCell {
-    func prepare(with news: Recipe) {
-        foodTitle.text = "\(news.title)"
-        foodPublisher.text = "\(news.publisher)"
-        foodRank.text = "\(news.socialRank)"
+    func prepare(with food: Recipe) {
+        foodTitle.text = "\(food.title)"
+        foodPublisher.text = "\(food.publisher)"
+        foodRank.text = "\(food.socialRank)"
+        downloadPlayerImage(url: food.imageURL)
+    }
+    
+    private func downloadPlayerImage(url: String) {
+        guard let imgUrl = URL(string: url) else { return }
+        Food2ForkWs.downloadImageFromUrl(imgUrl) { (downloadedImage) in
+            self.foodImg.image = downloadedImage
+        }
     }
 }
 

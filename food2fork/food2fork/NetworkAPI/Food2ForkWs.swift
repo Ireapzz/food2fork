@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 
 final class Food2ForkWs {
     
@@ -29,7 +30,6 @@ final class Food2ForkWs {
                             return
                         }
                         completion(food)
-                        print(food.count)
                     }
                 case .failure:
                     completion(nil)
@@ -37,6 +37,46 @@ final class Food2ForkWs {
                 }
         }
         
+    }
+    
+    func getFoodRecipe(with rld: String, completion: @escaping (FoodForkRecipe?) -> Void) {
+        
+        let getFoodParams: Parameters = [
+            "key": Constants.apiKey,
+            "rld": "\(rld)"
+        ]
+        
+        
+        Alamofire.request(Constants.getFoodUrl,
+                          parameters: getFoodParams)
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+                    if let jsonData = response.data {
+                        guard let foodDetail = try? JSONDecoder().decode(FoodForkRecipe.self, from: jsonData) else {
+                            completion(nil)
+                            return
+                        }
+                        completion(foodDetail)
+                    }
+                case .failure:
+                    completion(nil)
+                    print("error get food")
+                }
+        }
+        
+    }
+    
+    static func downloadImageFromUrl(_ sourceUrl: URL, responseHandler: @escaping (UIImage?) -> Void) {
+        
+        Alamofire.request(sourceUrl)
+            .responseImage { response in
+                if let downloadedImage = response.result.value {
+                    responseHandler(downloadedImage)
+                } else {
+                    responseHandler(nil)
+                }
+        }
     }
     
 }

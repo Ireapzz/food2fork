@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: - IBOutlet
-    @IBOutlet weak var foodTableView: UITableView!
+    @IBOutlet private weak var foodTableView: UITableView!
+    @IBOutlet private weak var foodSearchBar: UISearchBar!
     
     // MARK: - Private properties
     private var foodList: FoodFork? {
@@ -19,7 +20,11 @@ class ViewController: UIViewController {
             self.foodTableView.reloadData()
         }
     }
+    
+    var searchFood = String()
 
+    let callApi = Food2ForkWs()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -31,16 +36,8 @@ class ViewController: UIViewController {
 // MARK: - WebService
 extension ViewController {
     private func webService() {
-        let activityIndicator = UIActivityIndicatorView(style: .gray)// Create the activity indicator
-        activityIndicator.center = self.foodTableView.center
-        self.foodTableView.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        
-        let callApi = Food2ForkWs()
-        callApi.searchFood(with: "chicken") { food in
+        callApi.searchFood(with: "") { food in
             self.foodList = food
-            activityIndicator.stopAnimating() // On response stop animating
-            activityIndicator.removeFromSuperview() // remove the view
         }
     }
 }
@@ -49,6 +46,7 @@ extension ViewController {
 extension ViewController {
     private func setup() {
         self.setupTableView()
+        self.setupSearchBar()
     }
     
     private func setupTableView() {
@@ -58,6 +56,14 @@ extension ViewController {
         self.foodTableView.estimatedRowHeight = 40.0
         self.foodTableView.tableFooterView = UIView()
         self.foodTableView.register(cellType: FoodsTableViewCell.self)
+    }
+    
+    private func setupSearchBar() {
+        self.foodSearchBar.delegate = self
+        self.foodSearchBar.translatesAutoresizingMaskIntoConstraints = false
+        self.foodSearchBar.searchBarStyle = .minimal
+        self.foodSearchBar.isUserInteractionEnabled = true
+
     }
     
 }
@@ -81,4 +87,45 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let food = foodList {
+            let sender = food.recipes[indexPath.row]
+            self.performSegue(withIdentifier: "detailsFood", sender: sender)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        let food = sender as! Recipe
+        
+        switch segue.destination {
+        case let vc as FoodDetailsViewController:
+            vc.model = food
+            
+        default:
+            break
+        }
+        
+        
+    }
+    
+}
+
+// MARK : - UISearchBar Setup
+extension ViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(reload), object: nil)
+        searchFood = searchText
+        self.perform(#selector(reload), with: nil, afterDelay: 1)
+    }
+    
+    @objc func reload() {
+        print(searchFood)
+        callApi.searchFood(with: searchFood) { food in
+            self.foodList = food
+        }
+    }
 }
