@@ -39,11 +39,11 @@ final class Food2ForkWs {
         
     }
     
-    func getFoodRecipe(with rld: String, completion: @escaping (FoodForkRecipe?) -> Void) {
+    func getFoodRecipe(with rId: String, completion: @escaping (FoodForkRecipe?) -> Void) {
         
         let getFoodParams: Parameters = [
             "key": Constants.apiKey,
-            "rld": "\(rld)"
+            "rId": "\(rId)"
         ]
         
         

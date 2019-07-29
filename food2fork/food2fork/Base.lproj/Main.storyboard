@@ -110,13 +110,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VaE-p3-iHm">
-                                <rect key="frame" x="0.0" y="430" width="414" height="432"/>
+                                <rect key="frame" x="0.0" y="442" width="414" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="VaE-p3-iHm" firstAttribute="top" secondItem="C8v-5N-SHT" secondAttribute="bottom" constant="8" id="2kN-Uu-wFx"/>
+                            <constraint firstItem="VaE-p3-iHm" firstAttribute="top" secondItem="C8v-5N-SHT" secondAttribute="bottom" constant="20" id="2kN-Uu-wFx"/>
                             <constraint firstItem="C8v-5N-SHT" firstAttribute="trailing" secondItem="XM6-Tz-rRd" secondAttribute="trailing" id="6GU-aT-6oK"/>
                             <constraint firstItem="bfr-h0-3Dc" firstAttribute="trailing" secondItem="XeE-7j-HKI" secondAttribute="trailing" id="7mk-Qn-SP7"/>
                             <constraint firstItem="ury-ed-qNM" firstAttribute="trailing" secondItem="unU-G5-JwA" secondAttribute="trailing" id="BWT-VT-jbW"/>

@@ -9,7 +9,14 @@
 import Foundation
 
 // MARK: - FoodForkRecipe
-struct FoodForkRecipe: Codable {
+
+// MARK: - Food2Fork
+struct FoodForkRecipe: Codable, Equatable {
+    let recipe: RecipeFood
+}
+
+// MARK: - Recipe
+struct RecipeFood: Codable, Equatable {
     let publisher: String
     let f2FURL: String
     let ingredients: [String]
@@ -21,14 +28,14 @@ struct FoodForkRecipe: Codable {
     let title: String
     
     enum CodingKeys: String, CodingKey {
-        case publisher = "publisher"
+        case publisher
         case f2FURL = "f2f_url"
-        case ingredients = "ingredients"
+        case ingredients
         case sourceURL = "source_url"
         case recipeID = "recipe_id"
         case imageURL = "image_url"
         case socialRank = "social_rank"
         case publisherURL = "publisher_url"
-        case title = "title"
+        case title
     }
 }

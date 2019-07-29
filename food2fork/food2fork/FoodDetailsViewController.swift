@@ -10,6 +10,7 @@ import UIKit
 
 class FoodDetailsViewController: UIViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet private weak var foodImageView: UIImageView!
     @IBOutlet private weak var foodTitle: UILabel!
     @IBOutlet private weak var foodPublisher: UILabel!
@@ -30,7 +31,7 @@ class FoodDetailsViewController: UIViewController {
         let callApi = Food2ForkWs()
         callApi.getFoodRecipe(with: model.recipeID) { foodDetail in
             guard let food = foodDetail else { return }
-            self.ingredients = food.ingredients
+            self.ingredients = food.recipe.ingredients
         }
         
         setup()
@@ -38,6 +39,7 @@ class FoodDetailsViewController: UIViewController {
     
 }
 
+// MARK: - Configuration Setup
 extension FoodDetailsViewController {
     
     private func setup() {
@@ -92,6 +94,5 @@ extension FoodDetailsViewController: UITableViewDelegate, UITableViewDataSource 
         cell.prepare(with: ingredients[indexPath.row])
         return cell
     }
-    
-    
+  
 }
